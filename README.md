@@ -10,13 +10,14 @@ O objetivo do trabalho é aplicar e avaliar dois paradigmas de Recuperação de 
 
 ## Estrutura do Repositório
 
-O projeto segue estritamente a estrutura de diretórios e padrões de nomenclatura exigidos no enunciado:
+O projeto segue a estrutura de diretórios exigidos:
 
-*   `./baseline_bm25.ipynb`: Notebook unificado contendo o pipeline completo (Coleta, BM25, KNN e Avaliação).
-*   `./eval/`: Diretório contendo os arquivos de insumo e gabaritos de avaliação.
+*   `./baseline_bm25.ipynb`
+*   `./coleta_arxiv.ipynb`
+*   `./eval/`
     *   `queries.tsv`: Lista com as 11 consultas customizadas do domínio.
     *   `qrels.tsv`: Gabarito oficial de julgamento de relevância gerado via técnica de *Pooling* (Top-3).
-*   `./runs/`: Arquivos de saída formatados no padrão regulamentar da TREC.
+*   `./runs/` 
     *   `bm25.trec`: Resultados de busca do modelo esparso (Baseline).
     *   `knn.trec`: Resultados de busca do modelo denso (Avançado).
 
@@ -24,7 +25,7 @@ O projeto segue estritamente a estrutura de diretórios e padrões de nomenclatu
 
 ## Tecnologias e Modelos Utilizados
 
-1.  **Coleta de Dados:** Consumo automatizado da API oficial do ArXiv para estruturação do corpus com **673 artigos científicos únicos**.
+1.  **Coleta de Dados:** Consumo automatizado da API oficial do ArXiv para estruturação do corpus com **673 artigos científicos únicos**. - O processo de busca foi executado várias vezes, mas sempre parando em 673. Foi tentado adaptações para atingir o volume minimo como aumento de delay_seconds e num_retries, mas mesmo assim não consegui subir o número.
 2.  **Modelo Esparso (Baseline):** Algoritmo **BM25Okapi** alimentado com um pré-processador customizado em Regex (limpeza de pontuação e remoção de *stopwords* via NLTK). Hiperparâmetros: $k_1 = 1.5$ e $b = 0.75$.
 3.  **Modelo Denso (Avançado):** Rede neural **SPECTER2** (`allenai/specter2_base`) para geração de embeddings científicos de 768 dimensões, com indexação e busca por similaridade de cosseno via **FAISS (KNN)**.
 4.  **Avaliação Mecânica:** Biblioteca **`pytrec_eval`** computando as métricas macro-médias oficiais do ecossistema TREC.
