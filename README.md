@@ -57,4 +57,4 @@ O **BM25** superou o KNN Denso devido à presença de jargões matemáticos e si
 
 ## Defesa Metodológica em Vídeo
 
-[INSIRA O LINK DO SEU VÍDEO DO YOUTUBE/DRIVE AQUI](https://youtu.be/PU6emGhSR14)]
+[INSIRA O LINK DO SEU VÍDEO DO YOUTUBE/DRIVE AQUI](https://youtu.be/PU6emGhSR14)
